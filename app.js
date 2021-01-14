@@ -5,8 +5,8 @@ const https = require("https");
 const client = require("@mailchimp/mailchimp_marketing");
 
 client.setConfig({
-  apiKey: "9f4868596e9ecb77e1c8c6498e646874-us2",
-  server: "us2",
+  apiKey: process.env.apiKey,
+  server: process.env.server,
 });
 
 
@@ -27,7 +27,7 @@ app.post("/",(req,res)=>{
   const firstName = req.body.fname;
   const lastName = req.body.lname;
   const email = req.body.email;
-  const listid = "10effd4790";
+  const listid = process.env.listId;
 
   async function run() {
     try {
@@ -56,7 +56,4 @@ app.listen(process.env.PORT || 3000 ,() =>{
   console.log("Server Started at Port 3000");
 });
 
-
-// API Id : 9f4868596e9ecb77e1c8c6498e646874-us2
-
-// List Id : 10effd4790
+// Deployed Website : https://ancient-temple-42201.herokuapp.com/
